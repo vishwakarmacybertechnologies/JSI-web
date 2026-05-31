@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal Weight Calculator | Jaydeep Steel (India)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div class="top-bar">
+        <span><i class="fas fa-map-marker-alt"></i> Rakhiyal, Ahmedabad</span>
+        <span><i class="fas fa-phone-alt"></i> +91 99740 78551</span>
+        <span><i class="fas fa-envelope"></i> Vbjaydeepsteel@gmail.com</span>
+    </div>
+    
+    <header>
+        <nav>
+            <a href="index.html" class="logo-link">
+                <img src="edited-photo (1).png" alt="JSI Logo">
+                <span class="logo-text">JAYDEEP STEEL<br>(INDIA)</span>
+            </a>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="calculator.html" class="active">Calculator</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section" style="padding-top: 4rem;">
+        <div class="section-header reveal visible">
+            <h2 class="section-title">Theoretical <strong>Weight Calculator</strong></h2>
+            <div class="title-line"></div>
+            <p style="color: var(--text-muted); font-weight: 300; max-width: 600px; margin: 0 auto;">Calculate precise theoretical weights for your bulk industrial material requirements with engineering-grade accuracy.</p>
+        </div>
+
+        <div class="calculator-container reveal">
+            <div class="calc-panel inputs-panel">
+                <h3 style="margin-bottom: 2rem; font-size: 1.4rem;">Material Specifications</h3>
+                
+                <div class="input-group">
+                    <label>Metal Grade / Alloy</label>
+                    <div class="select-wrapper">
+                        <select id="metal-type">
+                            <option value="7.85">Mild / Carbon Steel</option>
+                            <option value="7.93" selected>Stainless Steel (304 / 316 / 316L)</option>
+                            <option value="7.75">Stainless Steel (410 / 420 / 430)</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Shape Profile</label>
+                    <div class="select-wrapper">
+                        <select id="metal-shape">
+                            <option value="flat" selected>Flat / Sheet / Plate</option>
+                            <option value="round">Round Bar</option>
+                            <option value="pipe">Pipe / Tube</option>
+                            <option value="angle">Angle</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="shape-visualizer">
+                    <svg width="0" height="0" style="position: absolute;">
+                        <defs>
+                            <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(-45)">
+                                <rect width="8" height="8" fill="rgba(197, 160, 89, 0.05)"/>
+                                <line x1="0" y1="0" x2="0" y2="8" stroke="var(--accent-gold)" stroke-width="1.5" opacity="0.8" />
+                            </pattern>
+                            <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                                <path d="M 10 0 L 0 5 L 10 10 z" fill="var(--primary-plum)" />
+                            </marker>
+                            <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--primary-plum)" />
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <svg id="svg-flat" viewBox="0 0 130 120" class="shape-svg">
+                        <rect x="25" y="15" width="60" height="60" fill="url(#hatch)" stroke="var(--accent-gold)" stroke-width="2"/>
+                        <line x1="25" y1="90" x2="85" y2="90" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <line x1="25" y1="80" x2="25" y2="95" stroke="var(--text-muted)" stroke-width="1"/>
+                        <line x1="85" y1="80" x2="85" y2="95" stroke="var(--text-muted)" stroke-width="1"/>
+                        <text x="55" y="110" fill="var(--primary-plum)" font-family="Montserrat" font-size="12" font-weight="600" text-anchor="middle">Width (W)</text>
+                        <line x1="100" y1="15" x2="100" y2="75" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <line x1="90" y1="15" x2="105" y2="15" stroke="var(--text-muted)" stroke-width="1"/>
+                        <line x1="90" y1="75" x2="105" y2="75" stroke="var(--text-muted)" stroke-width="1"/>
+                        <text x="115" y="45" transform="rotate(-90 115 45)" fill="var(--primary-plum)" font-family="Montserrat" font-size="11" font-weight="600" text-anchor="middle">Length (L)</text>
+                    </svg>
+
+                    <svg id="svg-round" viewBox="0 0 120 120" class="shape-svg" style="display: none;">
+                        <circle cx="60" cy="50" r="40" fill="url(#hatch)" stroke="var(--accent-gold)" stroke-width="2"/>
+                        <line x1="20" y1="50" x2="100" y2="50" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <text x="60" y="44" fill="var(--primary-plum)" font-family="Montserrat" font-size="12" font-weight="600" text-anchor="middle">Diameter (D)</text>
+                        <line x1="60" y1="45" x2="60" y2="55" stroke="var(--primary-plum)" stroke-width="1" opacity="0.5"/>
+                    </svg>
+
+                    <svg id="svg-pipe" viewBox="0 0 120 120" class="shape-svg" style="display: none;">
+                        <circle cx="60" cy="50" r="45" fill="url(#hatch)" stroke="var(--accent-gold)" stroke-width="2"/>
+                        <circle cx="60" cy="50" r="28" fill="var(--bg-alt)" stroke="var(--accent-gold)" stroke-width="2"/>
+                        <line x1="15" y1="50" x2="105" y2="50" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <text x="60" y="44" fill="var(--primary-plum)" font-family="Montserrat" font-size="11" font-weight="600" text-anchor="middle">Outer Dia (OD)</text>
+                        <line x1="60" y1="45" x2="60" y2="55" stroke="var(--primary-plum)" stroke-width="1" opacity="0.5"/>
+                        <line x1="60" y1="5" x2="60" y2="22" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <text x="66" y="17" fill="var(--primary-plum)" font-family="Montserrat" font-size="11" font-weight="600">WT</text>
+                    </svg>
+
+                    <svg id="svg-angle" viewBox="0 0 130 130" class="shape-svg" style="display: none;">
+                        <path d="M 35 15 L 50 15 L 50 80 L 95 80 L 95 95 L 35 95 Z" fill="url(#hatch)" stroke="var(--accent-gold)" stroke-width="2"/>
+                        <line x1="20" y1="15" x2="20" y2="95" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <line x1="15" y1="15" x2="30" y2="15" stroke="var(--text-muted)" stroke-width="1"/>
+                        <line x1="15" y1="95" x2="30" y2="95" stroke="var(--text-muted)" stroke-width="1"/>
+                        <text x="12" y="55" transform="rotate(-90 12 55)" fill="var(--primary-plum)" font-family="Montserrat" font-size="11" font-weight="600" text-anchor="middle">Leg A</text>
+                        <line x1="35" y1="110" x2="95" y2="110" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <line x1="35" y1="100" x2="35" y2="115" stroke="var(--text-muted)" stroke-width="1"/>
+                        <line x1="95" y1="100" x2="95" y2="115" stroke="var(--text-muted)" stroke-width="1"/>
+                        <text x="65" y="105" fill="var(--primary-plum)" font-family="Montserrat" font-size="11" font-weight="600" text-anchor="middle">Leg B</text>
+                        <line x1="110" y1="80" x2="110" y2="95" stroke="var(--primary-plum)" stroke-width="1.5" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+                        <line x1="100" y1="80" x2="115" y2="80" stroke="var(--text-muted)" stroke-width="1"/>
+                        <line x1="100" y1="95" x2="115" y2="95" stroke="var(--text-muted)" stroke-width="1"/>
+                        <text x="115" y="90" fill="var(--primary-plum)" font-family="Montserrat" font-size="10" font-weight="600" text-anchor="start">T</text>
+                    </svg>
+                </div>
+
+                <div id="dim-diameter" class="input-group dynamic-input" style="display: none;">
+                    <label>Diameter (mm)</label>
+                    <input type="number" id="val-diameter" placeholder="e.g., 25" min="0" step="any">
+                </div>
+
+                <div id="dim-width" class="input-group dynamic-input">
+                    <label>Width (mm)</label>
+                    <input type="number" id="val-width" placeholder="e.g., 500" min="0" step="any">
+                </div>
+
+                <div id="dim-lega" class="input-group dynamic-input" style="display: none;">
+                    <label>Leg A Length (mm)</label>
+                    <input type="number" id="val-lega" placeholder="e.g., 50" min="0" step="any">
+                </div>
+
+                <div id="dim-legb" class="input-group dynamic-input" style="display: none;">
+                    <label>Leg B Length (mm)</label>
+                    <input type="number" id="val-legb" placeholder="e.g., 50" min="0" step="any">
+                </div>
+
+                <div id="dim-thickness" class="input-group dynamic-input">
+                    <label>Thickness (mm)</label>
+                    <input type="number" id="val-thickness" placeholder="e.g., 5" min="0" step="any">
+                </div>
+
+                <div id="dim-od" class="input-group dynamic-input" style="display: none;">
+                    <label>Outer Diameter - OD (mm)</label>
+                    <input type="number" id="val-od" placeholder="e.g., 100" min="0" step="any">
+                </div>
+
+                <div id="dim-wall" class="input-group dynamic-input" style="display: none;">
+                    <label>Wall Thickness - WT (mm)</label>
+                    <input type="number" id="val-wall" placeholder="e.g., 3" min="0" step="any">
+                </div>
+
+                <div class="input-group">
+                    <label>Length (Meters)</label>
+                    <input type="number" id="val-length" placeholder="e.g., 6" value="1" min="0" step="any">
+                </div>
+
+                <div class="input-group">
+                    <label>Number of Pieces</label>
+                    <input type="number" id="val-pieces" placeholder="e.g., 10" value="1" min="1" step="1">
+                </div>
+
+                <button id="calculate-btn" class="btn" style="width: 100%; justify-content: center; margin-top: 1rem;">Compute Weight</button>
+            </div>
+
+            <div class="calc-panel result-panel">
+                <i class="fas fa-balance-scale" style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: #fff; margin-bottom: 1rem; font-size: 1.2rem; font-weight: 300;">Estimated Total Weight</h3>
+                
+                <div class="unit-toggle">
+                    <input type="radio" id="unit-kg" name="weight-unit" value="kg" checked>
+                    <label for="unit-kg">KG</label>
+                    
+                    <input type="radio" id="unit-lbs" name="weight-unit" value="lbs">
+                    <label for="unit-lbs">LBS</label>
+                    
+                    <input type="radio" id="unit-mt" name="weight-unit" value="mt">
+                    <label for="unit-mt">TONS</label>
+                </div>
+                
+                <div class="weight-display">
+                    <span id="final-weight">0.000</span>
+                    <span class="unit" id="display-unit-label">KG</span>
+                </div>
+                
+                <p style="color: #A0AEC0; font-size: 0.85rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+                    *Please note: This calculator provides theoretical weights based on standard material densities. Actual scale weights may vary slightly due to manufacturing tolerances and dimensional variations.
+                </p>
+
+                <a href="contact.html" class="btn" style="background: transparent; color: var(--accent-gold); width: 100%; justify-content: center; margin-top: 2rem; border-color: rgba(197, 160, 89, 0.3);">Request Exact Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>JAYDEEP STEEL (INDIA)</h2>
+                <p style="font-weight: 300; max-width: 300px; line-height: 1.8;">Since 2008, supplying the core materials that build India's fastest-growing industrial sectors.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Company Home</a></li>
+                    <li><a href="products.html">Material Portfolio</a></li>
+                    <li><a href="calculator.html">Weight Calculator</a></li>
+                    <li><a href="contact.html">Procurement Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Corporate Office</h4>
+                <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-map-pin" style="color: var(--accent-gold); width: 25px;"></i> Rakhiyal, Ahmedabad - 380002</p>
+                <p style="margin-bottom: 15px; font-weight: 300;"><i class="fas fa-phone" style="color: var(--accent-gold); width: 25px;"></i> +91 99740 78551</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Jaydeep Steel (India). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
